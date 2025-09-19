@@ -1,4 +1,46 @@
 /* Base styles for CarMatch */
+@font-face {
+  font-family: 'Oceanic Grotesk TRIAL';
+  src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Light-BF677de6f7e767c.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oceanic Grotesk TRIAL';
+  src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Regular-BF677de6f80627f.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oceanic Grotesk TRIAL';
+  src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Medium-BF677de6f7f025e.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oceanic Grotesk TRIAL';
+  src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Bold-BF677de6f7ce982.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oceanic Grotesk TRIAL';
+  src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Extrabold-BF677de6f7dd205.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oceanic Grotesk TRIAL';
+  src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Poster-BF677de6f8024b3.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --bg: #8e00ea;
   --text: #ffffff;
@@ -7,7 +49,7 @@
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+html { font-family: 'Oceanic Grotesk TRIAL', Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 body {
   margin: 0;
   color: var(--text);
@@ -23,26 +65,68 @@ body {
 
 /* App full-viewport sections */
 .app { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
-.screen {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.screen { position: absolute; inset: 0; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; opacity: 0; z-index: 0; transition: opacity 900ms ease; }
+.screen.screen--active { opacity: 1; z-index: 10; }
+.screen__content { max-width: 1100px; padding: 0 16px; text-align: center; }
+.screen__title { margin: 0; font-size: clamp(22px, 5vw, 54px); line-height: 1.25; color: #ffffff; }
 
 /* hero */
-.hero { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
-.hero__logo { display: block; width: min(90vw, 1542px); height: auto; object-fit: contain; filter: drop-shadow(0 4px 24px rgba(0,0,0,0.25)); }
-.hero__tagline { margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 680px; }
-.hero__arrow { margin-top: 10px; background: transparent; border: 0; color: #ffffff; cursor: pointer; padding: 8px; opacity: 0.9; }
+.hero { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero__card { position: relative; width: min(90vw, 1542px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; border-radius: 16px; overflow: visible; }
+.hero__video-bg { position: absolute; left: 50%; top: 50%; width: 660px; height: 660px; transform: translate(-50%, -50%); object-fit: contain; z-index: 0; pointer-events: none; will-change: width, height, transform, opacity; transition: width 3000ms cubic-bezier(0.16, 1, 0.3, 1), height 3000ms cubic-bezier(0.16, 1, 0.3, 1), opacity 1200ms ease, transform 3000ms cubic-bezier(0.16, 1, 0.3, 1); }
+.hero__logo { display: block; width: min(90vw, 1542px); height: auto; object-fit: contain; filter: drop-shadow(0 4px 24px rgba(0,0,0,0.25)); margin-bottom: clamp(10px, 5vw, 62px); position: relative; z-index: 1; }
+.hero__tagline { margin: 0; line-height: 1.35; color: #ffffff; max-width: min(90vw, 1542px); position: relative; z-index: 1; }
+.hero__tagline { font-size: clamp(16px, 4vw, 46px); }
+.hero__video-wrap { width: min(90vw, 1542px); margin-top: 16px; }
+.hero__video { width: 100%; height: auto; display: block; border-radius: 12px; pointer-events: none; }
+.hero__arrow { margin-top: 200px; background: transparent; border: 0; color: #ffffff; cursor: pointer; padding: 8px; opacity: 0.9; }
 .hero__arrow:hover { opacity: 1; }
 .hero__arrow:focus { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 4px; border-radius: 8px; }
-.hero__arrow-icon { display: block; animation: bounceY 1.6s ease-in-out infinite; }
+.hero__arrow-icon { display: block; width: 100px; height: 100px; animation: bounceY 1.6s ease-in-out infinite; }
 
 @keyframes bounceY {
   0%, 100% { transform: translateY(-2px); }
   50% { transform: translateY(6px); }
+}
+
+/* Exit transition from screen 1 */
+body.screen-1-exit .hero__card > :not(.hero__video-bg) { opacity: 0; transition: opacity 400ms ease; }
+body.screen-1-exit .hero__arrow { opacity: 0; transition: opacity 300ms ease; }
+body.screen-1-exit .hero__video-bg {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 120vw;
+  height: 120vh;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: 1000;
+}
+
+/* After expanded, fade video out when requested */
+body.screen-1-video-fade .hero__video-bg { opacity: 0; }
+
+/* Reveal screen 2 during fade out */
+body.screen-2-reveal #screen-2 { opacity: 0; }
+body.screen-2-reveal.screen-2-visible #screen-2 { opacity: 1; transition: opacity 900ms ease; }
+
+/* Generic crossfade overlay for transitions between any screens */
+.crossfade-layer { position: fixed; inset: 0; z-index: 1500; pointer-events: none; }
+.crossfade-layer .screen { position: absolute; inset: 0; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 900ms ease; }
+.crossfade-layer.show .screen { opacity: 1; }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hero__video-bg { width: 540px; height: 540px; }
+}
+
+@media (max-width: 640px) {
+  .hero__arrow { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); margin-top: 0; z-index: 10; }
+  .hero__arrow-icon { width: 70px; height: 70px; }
+  .hero__video-bg { width: 420px; height: 420px; }
+}
+
+@media (max-width: 400px) {
+  .hero__video-bg { width: 320px; height: 320px; }
 }
 

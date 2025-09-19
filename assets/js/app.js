@@ -8,6 +8,7 @@
   const $screens = $('.screen');
   let currentIndex = 0;
   let isAnimating = false;
+  let $crossfadeLayer = null;
 
   function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
@@ -25,13 +26,72 @@
     });
   }
 
+  function ensureCrossfadeLayer() {
+    if ($crossfadeLayer && $crossfadeLayer.length) return $crossfadeLayer;
+    $crossfadeLayer = $('<div class="crossfade-layer"></div>');
+    $('body').append($crossfadeLayer);
+    return $crossfadeLayer;
+  }
+
+  function crossfadeTo(targetIndex) {
+    const $layer = ensureCrossfadeLayer();
+    $layer.empty();
+    const $clone = $screens.eq(targetIndex).clone(true, true);
+    $clone.css({ opacity: 0 });
+    $layer.append($clone);
+    // Force reflow then show
+    void $clone[0].offsetWidth;
+    $layer.addClass('show');
+    $clone.css({ opacity: 1 });
+  }
+
+  function setActiveScreen(index) {
+    $screens.removeClass('screen--active');
+    const $target = $screens.eq(index);
+    $target.addClass('screen--active');
+  }
+
   function goToSection(index, options) {
     const target = clamp(index, 0, getMaxIndex());
     if (target === currentIndex || isAnimating) return;
+
+    // Special transition: from screen 1 (index 0) to screen 2 (index 1)
+    if (currentIndex === 0 && target === 1) {
+      return transitionFromFirstToSecond(options);
+    }
+
     isAnimating = true;
-    currentIndex = target;
-    setTransform(currentIndex);
-    setTimeout(() => { isAnimating = false; }, (options && options.duration) || 700);
+    setActiveScreen(target);
+    // allow CSS opacity transition to complete
+    const doneMs = 900;
+    setTimeout(() => {
+      currentIndex = target;
+      if ($crossfadeLayer) { $crossfadeLayer.removeClass('show').empty(); }
+      isAnimating = false;
+    }, doneMs);
+  }
+
+  function transitionFromFirstToSecond(options) {
+    // match the CSS transition for video expansion (3000ms) + hold (3000ms) + fade (800ms)
+    const expandMs = 3000;
+    const holdMs = 0;
+    const fadeMs = 800;
+    const $body = $('body');
+    isAnimating = true;
+    $body.addClass('screen-1-exit screen-2-reveal');
+
+    // after expansion completes, immediately fade video out and crossfade in screen 2
+    setTimeout(() => {
+      $body.addClass('screen-1-video-fade');
+      // start revealing screen 2
+      $body.addClass('screen-2-visible');
+      setActiveScreen(1);
+      setTimeout(() => {
+        currentIndex = 0;
+        isAnimating = false;
+        // keep classes so the final state persists
+      }, fadeMs + 50);
+    }, expandMs + holdMs + 50);
   }
 
   // Expose for programmatic navigation
@@ -94,5 +154,17 @@
 
   // Initial
   setTransform(0);
+
+  // Tagline swap for mobile
+  function applyTagline() {
+    const $tag = $('#tagline');
+    if (!$tag.length) return;
+    const fullTxt = $tag.attr('data-full');
+    const shortTxt = $tag.attr('data-short');
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    $tag.text(isMobile ? (shortTxt || '') : (fullTxt || ''));
+  }
+  applyTagline();
+  $win.on('resize', applyTagline);
 })();
 
