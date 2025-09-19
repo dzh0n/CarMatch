@@ -1,0 +1,48 @@
+/* Base styles for CarMatch */
+:root {
+  --bg: #8e00ea;
+  --text: #ffffff;
+  --muted: #f0e6ff;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* App full-viewport sections */
+.app { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hero */
+.hero { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+.hero__logo { display: block; width: min(90vw, 1542px); height: auto; object-fit: contain; filter: drop-shadow(0 4px 24px rgba(0,0,0,0.25)); }
+.hero__tagline { margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 680px; }
+.hero__arrow { margin-top: 10px; background: transparent; border: 0; color: #ffffff; cursor: pointer; padding: 8px; opacity: 0.9; }
+.hero__arrow:hover { opacity: 1; }
+.hero__arrow:focus { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 4px; border-radius: 8px; }
+.hero__arrow-icon { display: block; animation: bounceY 1.6s ease-in-out infinite; }
+
+@keyframes bounceY {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(6px); }
+}
+

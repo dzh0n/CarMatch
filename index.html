@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CarMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main id="app" class="app">
+    <section class="screen" id="screen-1" data-index="0" aria-label="Экран 1">
+      <div class="hero" role="region" aria-label="Приветственный экран">
+        <img class="hero__logo" src="assets/svg/logo.svg" alt="CarMatch logo" />
+        <p class="hero__tagline">Выбирайте с горячим сердцем и искусственным интеллектом</p>
+        <button class="hero__arrow" type="button" data-goto="1" aria-label="Прокрутить вниз">
+          <svg class="hero__arrow-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 5v14M12 19l-6-6M12 19l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+    <section class="screen" id="screen-2" data-index="1" aria-label="Экран 2"></section>
+    <section class="screen" id="screen-3" data-index="2" aria-label="Экран 3"></section>
+  </main>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script defer src="assets/js/app.js"></script>
+</body>
+</html>
+
