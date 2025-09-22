@@ -86,6 +86,13 @@ body {
   height: 100%;
 }
 
+@media (max-width: 1536px) {
+  .container {
+    max-width: 1300px;
+    padding: 0 20px;
+  }
+}
+
 @media (max-width: 1399px) {
   .container {
     max-width: 1200px;
