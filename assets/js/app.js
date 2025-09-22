@@ -23,7 +23,7 @@ $(document).ready(function() {
     const $currentSection = $('.section').eq(currentSectionIndex);
     const $nextSection = $('.section').eq(index);
 
-    // ВСТАВЬ СВОЙ КОД ЗДЕСЬ — перед началом анимации
+    // СВОЙ КОД ЗДЕСЬ — перед началом анимации
     if (typeof callbackBefore === 'function') {
       callbackBefore($currentSection, $nextSection);
     }
@@ -35,7 +35,7 @@ $(document).ready(function() {
     $nextSection.addClass('active');
     
 
-    // ВСТАВЬ СВОЙ КОД ЗДЕСЬ — после смены секций (но до сброса isAnimating)
+    // СВОЙ КОД ЗДЕСЬ — после смены секций (но до сброса isAnimating)
     if (typeof callbackAfter === 'function') {
       callbackAfter($currentSection, $nextSection);
     }

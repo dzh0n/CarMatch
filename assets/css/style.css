@@ -186,11 +186,12 @@ body {
 }
 
 .main-screen__next {
-  margin-top: 200px;
+  position: absolute;
   background: none;
   border: none;
   cursor: pointer;
   animation: bounceY 2s infinite;
+  bottom: 40px;
 }
 
 .main-screen__next img {
@@ -199,19 +200,7 @@ body {
   display: block;
 }
 
-@media (max-width: 1199px) {
-  .main-screen__next {
-    position: absolute;
-    left: 0;
-    bottom: 100px;
-    right: 0;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: max-content;
-    height: max-content;
-  }
+@media (max-width: 1199px) { 
 
   .main-screen__next img {
     width: 60px;
@@ -239,15 +228,27 @@ body {
   object-fit: cover;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: width 0.8s ease, top 0.8s ease; /* анимируем width и top */
 }
 
 .bg-video:nth-child(1) {
   width: 660px;
-  height: auto;
-  top: 35%;
+  height: auto;  
 }
 
 .bg-video.active {
   opacity: 1;
+}
+
+.bg-video.zoom-in {  
+  top: 50%;                  /* сдвигаем вниз */
+  transform: translate(-50%, -50%) scale(2); /* и увеличиваем */
+}
+
+
+@media (max-width: 1199px) {
+  .bg-video:nth-child(1){
+    width: 100%;
+    top: 50%;
+  }
 }
