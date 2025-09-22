@@ -159,6 +159,7 @@ body {
 
 .main-screen__logo {
   margin-bottom: 62px;
+  margin-bottom: clamp(12px, 5vw, 62px);
 }
 
 .main-screen__logo img {
@@ -173,6 +174,7 @@ body {
   line-height: 69%;
   letter-spacing: -0.03em;
   color: #fff;
+  text-align: center;
 }
 
 .main-screen__next {
@@ -187,4 +189,28 @@ body {
   width: 100px;
   height: 100px;
   display: block;
+}
+
+@media (max-width: 1199px) {
+  .main-screen__next {
+    position: absolute;
+    left: 0;
+    bottom: 100px;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+  }
+
+  .main-screen__next img {
+    width: 60px;
+    height: 60px;;
+  }
+
+  .main-screen__text span {
+    display: none;
+  }
 }
