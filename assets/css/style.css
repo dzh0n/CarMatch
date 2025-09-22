@@ -6,6 +6,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Oceanic Grotesk TRIAL';
   src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Regular-BF677de6f80627f.otf') format('opentype');
@@ -13,6 +14,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Oceanic Grotesk TRIAL';
   src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Medium-BF677de6f7f025e.otf') format('opentype');
@@ -20,6 +22,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Oceanic Grotesk TRIAL';
   src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Bold-BF677de6f7ce982.otf') format('opentype');
@@ -27,6 +30,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Oceanic Grotesk TRIAL';
   src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Extrabold-BF677de6f7dd205.otf') format('opentype');
@@ -34,6 +38,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Oceanic Grotesk TRIAL';
   src: url('../fonts/OceanicGroteskTRIAL/OceanicGroteskTRIAL-Poster-BF677de6f8024b3.otf') format('opentype');
@@ -41,15 +46,24 @@
   font-style: normal;
   font-display: swap;
 }
+
 :root {
   --bg: #8e00ea;
   --text: #ffffff;
   --muted: #f0e6ff;
+  --font-family: 'Oceanic Grotesk TRIAL', sans-serif;
 }
 
 @keyframes bounceY {
-  0%, 100% { transform: translateY(-2px); }
-  50% { transform: translateY(6px); }
+
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 * {
@@ -58,10 +72,18 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1500px;
+  height: 100%;
 }
 
 .slider-container {
@@ -92,7 +114,50 @@ html, body {
 }
 
 .content {
-  font-size: 3rem;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+.main-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-screen__logo {
+  margin-bottom: 62px;
+}
+
+.main-screen__logo img {
+  width: 100%;
+  height: auto;
+}
+
+.main-screen__text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: clamp(16px, 5vw, 48px);
+  line-height: 69%;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.main-screen__next {
+  margin-top: 200px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  animation: bounceY 2s infinite;
+}
+
+.main-screen__next img {
+  width: 100px;
+  height: 100px;
+  display: block;
 }
