@@ -1,40 +1,29 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>CarMatch</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <main id="app" class="app">
-    <section class="screen screen--active" id="screen-1" data-index="0" aria-label="Экран 1">
-      <div class="hero" role="region" aria-label="Приветственный экран">
-        <div class="hero__card">
-          <video class="hero__video-bg" src="assets/video/heart.webm" autoplay muted loop playsinline preload="metadata"></video>
-          <img class="hero__logo" src="assets/svg/logo.svg" alt="CarMatch logo" />
-          <p class="hero__tagline" id="tagline" data-full="Выбирайте с горячим сердцем и искусственным интеллектом" data-short="Выбирайте сердцем">Выбирайте с горячим сердцем и искусственным интеллектом</p>
-        </div>
-        <button class="hero__arrow" type="button" data-goto="1" aria-label="Прокрутить вниз">
-          <img class="hero__arrow-icon" src="assets/svg/chevron.svg" alt="Chevron" />
-        </button>
-      </div>
-    </section>
-    <section class="screen" id="screen-2" data-index="1" aria-label="Экран 2">
-      <div class="screen__content">
-        <p class="screen__title">искусственный интеллект  и эксперт для подбора идеального автомобиля</p>
-      </div>
-    </section>
-    <section class="screen" id="screen-3" data-index="2" aria-label="Экран 3"></section>
-  </main>
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script defer src="assets/js/app.js"></script>
+  <div class="slider-container">
+    <div class="section active" data-index="0">
+      <div class="content">Секция 1</div>
+    </div>
+    <div class="section" data-index="1">
+      <div class="content">Секция 2</div>
+    </div>
+    <div class="section" data-index="2">
+      <div class="content">Секция 3</div>
+    </div>
+  </div>
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
-
