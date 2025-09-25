@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CarMatch</title>
-  <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 
@@ -14,8 +13,11 @@
   <div class="slider-container">
 
     <div class="bg-videos">
-      <video autoplay muted loop playsinline class="bg-video active animated fadeIn slower delay-1s">
+      <video autoplay muted loop playsinline class="bg-video active">
         <source src="assets/video/heart.webm" type="video/mp4">
+      </video>
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="assets/video/brain.webm" type="video/mp4">
       </video>
     </div>
 
@@ -23,22 +25,37 @@
       <div class="content">
         <div class="container">
           <div class="main-screen">
-            <div class="main-screen__logo animated fadeIn slow">
-              <img src="assets/svg/logo.svg" alt="CarMatch">
+            <div class="main-screen__logo">
+              <img src="assets/svg/logo.svg" alt="CarMatch" class="animated">
             </div>
-            <div class="main-screen__text animated fadeIn slow">Выбирайте <span>с горячим</span> сердцем<span> и искусственным интеллектом</span></div>
-            <button class="main-screen__next "><img src="assets/svg/chevron.svg" class="animated fadeIn slower delay-1s"></button>
+            <div class="main-screen__text animated">Выбирайте <span>с горячим</span> сердцем<span> и искусственным
+                интеллектом</span></div>
+            <button class="main-screen__next animated"><img src="assets/svg/chevron.svg"></button>
           </div>
         </div>
       </div>
     </div>
 
     <div class="section" data-index="1">
-      <div class="content">Секция 2</div>
+      <div class="content">
+        <div class="container">
+          <a href="/" class="second-section__logo animated">
+            <img src="assets/svg/logo.svg" alt="CarMatch">
+          </a>
+
+
+
+          <button class="main-screen__next animated"><img src="assets/svg/chevron.svg"></button>
+
+        </div>
+      </div>
     </div>
+
+
     <div class="section" data-index="2">
       <div class="content">Секция 3</div>
     </div>
+
   </div>
 
 
