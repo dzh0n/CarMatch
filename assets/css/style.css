@@ -58,11 +58,11 @@
 
   0%,
   100% {
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateX(-50%);
   }
 
   50% {
-    transform: translateY(6px);
+    transform: translateY(6px) translateX(-50%);;
   }
 }
 
@@ -193,6 +193,8 @@ body {
   cursor: pointer;
   animation: bounceY 2s infinite;
   bottom: 40px;
+  position: absolute;
+  left: 50%;
 }
 
 .main-screen__next img {
@@ -281,3 +283,4 @@ body {
 .animated {
   opacity: 0;
 }
+
