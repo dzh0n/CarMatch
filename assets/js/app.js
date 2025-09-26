@@ -348,3 +348,21 @@ initCookiesNotification({
     }
   }
 });
+
+
+function scrollNext() {
+  // Создаем jQuery событие
+  var jQueryEvent = $.Event('wheel');
+
+  // Добавляем свойства оригинального события
+  jQueryEvent.originalEvent = {
+    deltaX: 0,
+    deltaY: 100, // скролл вниз
+    deltaZ: 0,
+    deltaMode: 0,
+    preventDefault: function () { } // заглушка для preventDefault
+  };
+
+  // Триггерим событие
+  $(window).trigger(jQueryEvent);
+}
