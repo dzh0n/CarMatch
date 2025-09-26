@@ -402,5 +402,127 @@ body {
 }
 
 .cookies .blue_btn.op {
-    background: rgba(146, 64, 198, 0.5);
+  background: rgba(146, 64, 198, 0.5);
+}
+
+.chat {
+  height: 100vh;
+  padding-top: 85px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 1212px;
+  gap: 30px;
+}
+
+.chat_texts-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.chat .chat_input {
+  background: #F8EEFF;
+  padding: 10px 14px 10px 0;
+  border-radius: 60px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 48px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.chat .chat_input button {
+  background: #F8EEFF;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: 0.3s all ease;
+  height: 100%;
+}
+
+.chat .chat_input button.active {
+    opacity: 1;
+}
+
+.chat .chat_input button svg {
+  height: 100%;
+  width: 100%;
+}
+
+.chat .input_chat {
+  font-family: inherit;
+  height: 100%;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #000;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100px;
+  background-color: #F8EEFF;
+  letter-spacing: -1.44px;
+}
+
+.chat .chat_texts .chat_item {
+  padding: 20px 40px 24px 40px;
+  color: #000;
+  font-family: "Oceanic Grotesk TRIAL";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: 0.84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 730px;
+  width: max-content;
+}
+
+.chat .chat_texts .chat_item.right {
+    border-radius: 40px 40px 0px 40px;
+    background: #F8EEFF;
+    margin-left: auto;
+}
+
+.chat .chat_texts .chat_item.left {
+    border-radius: 40px 40px 40px 0px;
+    background: #F8EEFF;
+}
+
+.chat_texts {
+  height: calc(100vh - 250px);
+    overflow: hidden;
+    overflow: auto; /* Изменено с hidden на auto */
+    -webkit-overflow-scrolling: touch; /* Для плавного скролла на iOS */
+    /* Скрываем scrollbar для WebKit браузеров (Chrome, Safari, Edge) */
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+    
+    /* Скрываем scrollbar для Firefox */
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE и Edge */
+}
+
+.chat_texts::before {
+    content: '';
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, #8E00EA, transparent);
+    z-index: 10;
+    pointer-events: none; /* Чтобы можно было кликать сквозь градиент */
 }

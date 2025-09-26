@@ -4,6 +4,10 @@ $(document).ready(function () {
   const totalSections = $('.section').length;
   let isAnimating = false;
 
+  if (window.carMatchChat) {
+    window.carMatchChat.enableChat();
+  }
+
 
   // Инициализация
   $('.section').eq(0).addClass('active');
@@ -60,6 +64,7 @@ $(document).ready(function () {
     if (e.originalEvent.deltaY > 0) {
       //goToSection(currentSectionIndex + 1);
       if (currentSectionIndex === 0) {
+        
         goToSection(currentSectionIndex + 1, function (current, next) {
           // Перед анимацией
           $('.bg-video').eq(0).addClass('zoom-in');
@@ -73,12 +78,14 @@ $(document).ready(function () {
               $('.bg-video').eq(1).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
               animateSection2();
             }, 2000);
+            
           }
         );
       }
 
       //#2
       if (currentSectionIndex === 1) {
+        
         goToSection(currentSectionIndex + 1, function (current, next) {
           // Перед анимацией
           $('.bg-video').eq(1).addClass('zoom-in');
@@ -92,6 +99,7 @@ $(document).ready(function () {
               $('.bg-video').eq(2).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
               animateSection3();
             }, 2000);
+            
           }
         );
       }
@@ -184,12 +192,94 @@ function animateSection3() {
   $('.animated').css({ opacity: 0 }); // Сброс анимации
   var section = $('.section').eq(2);
   section.find('.second-section__logo').animate({ opacity: 1 }, 2000);
-
+  section.find('.chat').delay(500).animate({ opacity: 1 }, 2000);
 
 }
 
 
-
+// jQuery код для управления прокруткой
+$(document).ready(function() {
+    const $chatContainer = $('.chat_texts');
+    const $messagesContainer = $chatContainer.find('.chat_texts-inner');
+    
+    // Флаг для отслеживания, находится ли пользователь внизу
+    let isScrolledToBottom = true;
+    
+    // Функция прокрутки к самому низу
+    function scrollToBottom() {
+        $chatContainer.scrollTop($chatContainer[0].scrollHeight);
+        isScrolledToBottom = true;
+    }
+    
+    // Прокрутка к низу при загрузке
+    scrollToBottom();
+    
+    // Обработчик скролла для отслеживания позиции пользователя
+    $chatContainer.on('scroll', function() {
+        const scrollTop = $chatContainer.scrollTop();
+        const scrollHeight = $chatContainer[0].scrollHeight;
+        const clientHeight = $chatContainer[0].clientHeight;
+        
+        // Проверяем, находится ли пользователь внизу (с небольшим запасом в 10px)
+        isScrolledToBottom = (scrollHeight - scrollTop - clientHeight <= 10);
+    });
+    
+    // Функция для добавления нового сообщения
+    function addMessage(messageText) {
+        const $newMessage = $('<div class="message">' + messageText + '</div>');
+        $messagesContainer.append($newMessage);
+        
+        // Если пользователь был внизу, прокручиваем к новому сообщению
+        if (isScrolledToBottom) {
+            scrollToBottom();
+        }
+    }
+    
+    // Обработчик для свайпов (touch events)
+    let startY = 0;
+    let isSwiping = false;
+    
+    $chatContainer.on('touchstart', function(e) {
+        startY = e.originalEvent.touches[0].clientY;
+        isSwiping = true;
+    });
+    
+    $chatContainer.on('touchmove', function(e) {
+        if (!isSwiping) return;
+        
+        const currentY = e.originalEvent.touches[0].clientY;
+        const deltaY = startY - currentY;
+        
+        // Прокручиваем контейнер вручную для плавности
+        $chatContainer.scrollTop($chatContainer.scrollTop() + deltaY);
+        startY = currentY;
+        
+        e.preventDefault();
+    });
+    
+    $chatContainer.on('touchend', function() {
+        isSwiping = false;
+    });
+    
+    // Автоматическая прокрутка при изменении размера контента
+    const resizeObserver = new ResizeObserver(function() {
+        if (isScrolledToBottom) {
+            scrollToBottom();
+        }
+    });
+    
+    if ($messagesContainer[0]) {
+        resizeObserver.observe($messagesContainer[0]);
+    }
+    
+    
+    
+    // Публичные методы для внешнего использования
+    window.chatScroll = {
+        scrollToBottom: scrollToBottom,
+        addMessage: addMessage
+    };
+});
 
 
 function initCookiesNotification(options) {
