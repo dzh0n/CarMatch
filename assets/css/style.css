@@ -298,6 +298,8 @@ body {
   flex-direction: column;
   gap: 50px;
   padding-top: 130px;
+  height: calc(100vh - 130px);
+  justify-content: center;
 }
 
 .info-digits {

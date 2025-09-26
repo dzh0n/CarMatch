@@ -51,7 +51,7 @@ $(document).ready(function () {
     setTimeout(() => {
       currentSectionIndex = index;
       isAnimating = false;
-    }, 500); // ← синхронизировано с CSS transition
+    }, 3500); // ← синхронизировано с CSS transition
 
   };
 
@@ -63,14 +63,14 @@ $(document).ready(function () {
 
     if (e.originalEvent.deltaY > 0) {
       //goToSection(currentSectionIndex + 1);
-      if (currentSectionIndex === 0) {
+      if (currentSectionIndex === 0) {        
 
         goToSection(currentSectionIndex + 1, function (current, next) {
           // Перед анимацией
           $('.bg-video').eq(0).addClass('zoom-in');
-          $('.bg-video').eq(1).addClass('zoom-in');
+          $('.bg-video').eq(1).addClass('zoom-in');          
         },
-          function (current, next) {
+          function (current, next) {            
             // После анимации
             setTimeout(() => {
               $('.bg-video').eq(0).animate({ opacity: 0 }).removeClass('zoom-in');
