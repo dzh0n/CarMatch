@@ -3,11 +3,11 @@ $(document).ready(function () {
   let currentSectionIndex = 0;
   const totalSections = $('.section').length;
   let isAnimating = false;
-  
+
 
   // Инициализация
   $('.section').eq(0).addClass('active');
-  
+
   animateSection1();
 
   // ================================
@@ -68,14 +68,35 @@ $(document).ready(function () {
           function (current, next) {
             // После анимации
             setTimeout(() => {
-              $('.bg-video').eq(0).animate({opacity: 0}).removeClass('zoom-in');
+              $('.bg-video').eq(0).animate({ opacity: 0 }).removeClass('zoom-in');
               $('.bg-video').eq(0).removeClass('active zoom-in');
-              $('.bg-video').eq(1).removeClass('zoom-in').addClass('active').animate({opacity: 1});  
-              animateSection2();            
+              $('.bg-video').eq(1).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
+              animateSection2();
             }, 2000);
           }
         );
       }
+
+      //#2
+      if (currentSectionIndex === 1) {
+        goToSection(currentSectionIndex + 1, function (current, next) {
+          // Перед анимацией
+          $('.bg-video').eq(1).addClass('zoom-in');
+          $('.bg-video').eq(2).addClass('zoom-in');
+        },
+          function (current, next) {
+            // После анимации
+            setTimeout(() => {
+              $('.bg-video').eq(1).animate({ opacity: 0 }).removeClass('zoom-in');
+              $('.bg-video').eq(1).removeClass('active zoom-in');
+              $('.bg-video').eq(2).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
+              animateSection3();
+            }, 2000);
+          }
+        );
+      }
+
+
     } else {
       //goToSection(currentSectionIndex - 1);
 
@@ -88,10 +109,10 @@ $(document).ready(function () {
           function (current, next) {
             // После анимации
             setTimeout(() => {
-              $('.bg-video').eq(1).animate({opacity: 0}).removeClass('zoom-in');
+              $('.bg-video').eq(1).animate({ opacity: 0 }).removeClass('zoom-in');
               $('.bg-video').eq(1).removeClass('active');
-              $('.bg-video').eq(0).addClass('active zoom-out').animate({opacity: 1}).removeClass('zoom-in zoom-out');  
-              animateSection1();            
+              $('.bg-video').eq(0).addClass('active zoom-out').animate({ opacity: 1 }).removeClass('zoom-in zoom-out');
+              animateSection1();
             }, 2000);
           }
         );
@@ -122,7 +143,7 @@ $(document).ready(function () {
     if (diff > 0) {
       //goToSection(currentSectionIndex + 1);
       if (currentSectionIndex === 0) {
-        
+
       }
 
 
@@ -136,17 +157,90 @@ $(document).ready(function () {
 
 function animateSection1() {
   // Анимация для секции 1
-  $('.animated').css({opacity: 0}); // Сброс анимации
+  $('.animated').css({ opacity: 0 }); // Сброс анимации
   var section = $('.section').eq(0);
-  section.find('.main-screen__logo img').animate({opacity: 1},2000);
-  section.find('.main-screen__text').delay(500).animate({opacity: 1},2000);
-  section.find('.main-screen__next').delay(500).animate({opacity: 1},2000);
+  section.find('.main-screen__logo img').animate({ opacity: 1 }, 2000);
+  section.find('.main-screen__text').delay(500).animate({ opacity: 1 }, 2000);
+  section.find('.main-screen__next').delay(500).animate({ opacity: 1 }, 2000);
 }
 
 function animateSection2() {
   // Анимация для секции 2
-  $('.animated').css({opacity: 0}); // Сброс анимации
+  $('.animated').css({ opacity: 0 }); // Сброс анимации
   var section = $('.section').eq(1);
-  section.find('.second-section__logo').animate({opacity: 1},2000);
-  section.find('.main-screen__next').delay(500).animate({opacity: 1},2000);
+  section.find('.second-section__logo').animate({ opacity: 1 }, 2000);
+  section.find('.info-titles span').each(function (index) {
+    $(this).delay(10 + index * 500).animate({ opacity: 1 }, 2000);
+  });
+  section.find('.info-digits__item').each(function (index) {
+    $(this).delay(10 + index * 500).animate({ opacity: 1 }, 2000);
+  });
+  section.find('.main-screen__next').delay(500).animate({ opacity: 1 }, 2000);
+
 }
+
+function animateSection3() {
+  // Анимация для секции 3
+  $('.animated').css({ opacity: 0 }); // Сброс анимации
+  var section = $('.section').eq(2);
+  section.find('.second-section__logo').animate({ opacity: 1 }, 2000);
+
+
+}
+
+
+
+
+
+function initCookiesNotification(options) {
+  const settings = $.extend({
+    storageKey: 'cookiesAccepted',
+    notificationId: 'cookies-notification',
+    acceptButtonId: 'accept-cookies',
+    expirationDays: 365,
+    showDelay: 500
+  }, options);
+
+  function checkCookiesAcceptance() {
+    const cookiesAccepted = localStorage.getItem(settings.storageKey);
+
+    console.log(cookiesAccepted);
+
+    if (cookiesAccepted === 'true') {
+      $(`#${settings.notificationId}`).hide();
+    } else {
+      // Показываем с небольшой задержкой для лучшего UX
+      setTimeout(() => {
+        $(`#${settings.notificationId}`).fadeIn();
+      }, settings.showDelay);
+    }
+  }
+
+  function acceptCookies() {
+    localStorage.setItem(settings.storageKey, 'true');
+
+    // Устанавливаем срок действия (опционально)
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + settings.expirationDays);
+    document.cookie = `cookiesAccepted=true; expires=${expirationDate.toUTCString()}; path=/`;
+
+    $(`#${settings.notificationId}`).hide();
+  }
+
+  // Инициализация
+  $(document).ready(function () {
+    checkCookiesAcceptance();
+
+    $(`#${settings.acceptButtonId}`).on('click', function () {
+      acceptCookies();
+    });
+  });
+}
+
+// Использование
+initCookiesNotification({
+  notificationId: 'cookies-block',
+  acceptButtonId: 'accept-btn',
+  expirationDays: 30,
+  showDelay: 2000
+});
