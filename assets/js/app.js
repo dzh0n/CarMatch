@@ -63,14 +63,14 @@ $(document).ready(function () {
 
     if (e.originalEvent.deltaY > 0) {
       //goToSection(currentSectionIndex + 1);
-      if (currentSectionIndex === 0) {        
+      if (currentSectionIndex === 0) {
 
         goToSection(currentSectionIndex + 1, function (current, next) {
           // Перед анимацией
           $('.bg-video').eq(0).addClass('zoom-in');
-          $('.bg-video').eq(1).addClass('zoom-in');          
+          $('.bg-video').eq(1).addClass('zoom-in');
         },
-          function (current, next) {            
+          function (current, next) {
             // После анимации
             setTimeout(() => {
               $('.bg-video').eq(0).animate({ opacity: 0 }).removeClass('zoom-in');
@@ -103,6 +103,26 @@ $(document).ready(function () {
           }
         );
       }
+
+      //#3
+      /*if (currentSectionIndex === 2) {
+        goToSection(currentSectionIndex + 1, function (current, next) {
+          // Перед анимацией
+          $('.bg-video').eq(2).addClass('zoom-in');
+          $('.bg-video').eq(3).addClass('zoom-in');
+        },
+          function (current, next) {
+            // После анимации
+            setTimeout(() => {
+              $('.bg-video').eq(2).animate({ opacity: 0 }).removeClass('zoom-in');
+              $('.bg-video').eq(2).removeClass('active zoom-in');
+              $('.bg-video').eq(3).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
+              animateSection4();
+            }, 2000);
+
+          }
+        );
+      }*/
 
 
     } else {
@@ -193,6 +213,16 @@ function animateSection3() {
   var section = $('.section').eq(2);
   section.find('.second-section__logo').animate({ opacity: 1 }, 2000);
   section.find('.chat').delay(500).animate({ opacity: 1 }, 2000);
+
+}
+
+
+function animateSection4() {
+  // Анимация для секции 4
+  $('.animated').css({ opacity: 0 }); // Сброс анимации
+  var section = $('.section').eq(3);
+  section.find('.second-section__logo').animate({ opacity: 1 }, 2000);
+  section.find('.car_swiper').delay(500).animate({ opacity: 1 }, 2000);
 
 }
 

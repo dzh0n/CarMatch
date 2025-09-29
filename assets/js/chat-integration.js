@@ -566,6 +566,26 @@ class CarMatchChat {
             this.carRecommendations.appendChild(carSlide);
             console.log(`✅ Added car slide ${index + 1}: ${carTitle}`);
         });
+
+
+        //
+        var currentSectionIndex = 2;
+        goToSection(currentSectionIndex + 1, function (current, next) {
+          // Перед анимацией
+          $('.bg-video').eq(2).addClass('zoom-in');
+          $('.bg-video').eq(3).addClass('zoom-in');
+        },
+          function (current, next) {
+            // После анимации
+            setTimeout(() => {
+              $('.bg-video').eq(2).animate({ opacity: 0 }).removeClass('zoom-in');
+              $('.bg-video').eq(2).removeClass('active zoom-in');
+              $('.bg-video').eq(3).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
+              animateSection4();
+            }, 2000);
+
+          }
+        );
         
         // Инициализация Swiper для карточек автомобилей
         setTimeout(() => {
@@ -587,15 +607,16 @@ class CarMatchChat {
         this.carSwiper = new Swiper('.car_swiper', {
             slidesPerView: 1,
             spaceBetween: 30,
-            loop: shouldLoop,
-            autoplay: shouldLoop ? {
+            //loop: shouldLoop,
+            /*autoplay: shouldLoop ? {
                 delay: 5000,
                 disableOnInteraction: false,
-            } : false,
+            } : false,*/
             navigation: {
                 nextEl: '.right_button',
                 prevEl: '.left_button',
             },
+            /*
             // Защита от конфликтов скроллинга
             touchEventsTarget: 'container',
             simulateTouch: true,
@@ -615,7 +636,7 @@ class CarMatchChat {
                 delay: 5000,
                 disableOnInteraction: true,
                 pauseOnMouseEnter: true,
-            },
+            },*/
             breakpoints: {
                 768: {
                     slidesPerView: 2,
@@ -629,7 +650,7 @@ class CarMatchChat {
     
     scrollToCarsSection() {
         // Используем существующую навигацию сайта для перехода к секции автомобилей
-        const carsSection = document.querySelector('[data-section="5"]');
+       /* const carsSection = document.querySelector('[data-section="5"]');
         if (carsSection) {
             console.log('🎯 Found cars section:', carsSection);
             try {
@@ -672,7 +693,7 @@ class CarMatchChat {
                 console.log('📍 Using alternative selector for cars section');
                 altSection.scrollIntoView({ behavior: 'smooth' });
             }
-        }
+        }*/
     }
     
     formatPrice(price) {

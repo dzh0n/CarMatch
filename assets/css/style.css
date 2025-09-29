@@ -80,6 +80,10 @@ body {
   font-family: var(--font-family);
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 100%;
   margin: 0 auto;
@@ -263,6 +267,12 @@ body {
 .bg-video:nth-child(3) {
   width: auto;
   height: 90vh;
+}
+
+.bg-video:nth-child(4) {
+  width: 460px;
+  height: auto;
+  top: 135px;
 }
 
 
@@ -450,7 +460,7 @@ body {
 }
 
 .chat .chat_input button.active {
-    opacity: 1;
+  opacity: 1;
 }
 
 .chat .chat_input button svg {
@@ -490,41 +500,301 @@ body {
 }
 
 .chat .chat_texts .chat_item.right {
-    border-radius: 40px 40px 0px 40px;
-    background: #F8EEFF;
-    margin-left: auto;
+  border-radius: 40px 40px 0px 40px;
+  background: #F8EEFF;
+  margin-left: auto;
 }
 
 .chat .chat_texts .chat_item.left {
-    border-radius: 40px 40px 40px 0px;
-    background: #F8EEFF;
+  border-radius: 40px 40px 40px 0px;
+  background: #F8EEFF;
 }
 
 .chat_texts {
   height: calc(100vh - 250px);
-    overflow: hidden;
-    overflow: auto; /* Изменено с hidden на auto */
-    -webkit-overflow-scrolling: touch; /* Для плавного скролла на iOS */
-    /* Скрываем scrollbar для WebKit браузеров (Chrome, Safari, Edge) */
-    &::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-        display: none;
-    }
-    
-    /* Скрываем scrollbar для Firefox */
-    scrollbar-width: none;
-    -ms-overflow-style: none; /* IE и Edge */
+  overflow: hidden;
+  overflow: auto;
+  /* Изменено с hidden на auto */
+  -webkit-overflow-scrolling: touch;
+
+  /* Для плавного скролла на iOS */
+  /* Скрываем scrollbar для WebKit браузеров (Chrome, Safari, Edge) */
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  /* Скрываем scrollbar для Firefox */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* IE и Edge */
 }
 
 .chat_texts::before {
-    content: '';
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    height: 30px;
-    background: linear-gradient(to bottom, #8E00EA, transparent);
-    z-index: 10;
-    pointer-events: none; /* Чтобы можно было кликать сквозь градиент */
+  content: '';
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(to bottom, #8E00EA, transparent);
+  z-index: 10;
+  pointer-events: none;
+  /* Чтобы можно было кликать сквозь градиент */
+}
+
+.section[data-index="3"] .second-section__logo {
+  top: 60px;
+  height: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+.cars .car_swiper {
+  margin: auto;
+  touch-action: pan-x pan-y;
+  overflow: hidden;
+  padding-top: 260px;
+}
+
+.cars .car_swiper .swiper-wrapper {
+  position: relative;
+  z-index: 15;
+  touch-action: pan-x;
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper-wrapper {
+    overflow: scroll;
+    scrollbar-width: none;
+    gap: 0 12px;
+    align-items: stretch;
+  }
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide {
+  /*max-width: 400px;*/
+  border-radius: 40px;
+  height: auto;
+  touch-action: auto;
+  user-select: none;
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper-wrapper .swiper-slide {
+    max-width: 260px;
+    border-radius: 24px;
+  }
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+  border-radius: 40px;
+  background: #F8EEFF;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  padding: 18px;
+  width: 100%;
+  text-align: start;
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper-wrapper .swiper-slide .cars_item {
+    border-radius: 24px;
+    padding: 12px;
+    height: 100%;
+  }
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_img {
+  max-width: 364px;
+  max-height: 196px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 38px 0 34px 0;
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px 0;
+  text-align: start;
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts {
+    gap: 0;
+  }
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts .item_title {
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 27.048px;
+  /* 112.7% */
+  letter-spacing: -0.72px;
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts .item_title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.6px;
+    margin-bottom: 8px;
+  }
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px 0;
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts ul {
+    margin-bottom: 20px;
+  }
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts ul li {
+  display: flex;
+  gap: 0 5px;
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts ul li span {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  /* 22.4px */
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts ul li span:first-child {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts ul li span:last-child {
+  color: #000;
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_texts .item_description {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  /* 19.6px */
+  margin-top: 8px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px 0;
+  width: 100%;
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_buttons .button {
+  height: 63px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  text-align: center;
+  font-family: "Oceanic Grotesk TRIAL";
+  font-size: 19.419px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27.048px;
+  /* 139.286% */
+  letter-spacing: -0.583px;
+  border-radius: 22px;
+  background: #FFF;
+  transition: 0.3s all ease;
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_buttons .button {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_buttons .button:hover {
+  background-color: #9240C6;
+  color: #fff;
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_buttons .button.white {
+  color: #000;
+}
+
+.cars .car_swiper .swiper-wrapper .swiper-slide .cars_item .item_buttons .button.white:hover {
+  color: #fff;
+}
+
+.cars .car_swiper .swiper_buttons {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 1199px) {
+  .cars .car_swiper .swiper_buttons {
+    gap: 0 500px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cars .car_swiper .swiper_buttons {
+    display: none;
+  }
+}
+
+.cars .car_swiper .swiper_buttons .swiper-button-disabled {
+  opacity: 0.4;
+}
+
+.cars .car_swiper .swiper_buttons .left_button,
+.cars .car_swiper .swiper_buttons .right_button {
+  transition: 0.3s all ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+}
+
+.cars .car_swiper .swiper_buttons .left_button {
+  transform: rotate(180deg);
 }

@@ -9,6 +9,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+
 </head>
 
 <body>
@@ -25,6 +28,9 @@
       <video autoplay muted loop playsinline class="bg-video">
         <source src="assets/video/shape.webm" type="video/mp4">
       </video>
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="assets/video/heart.webm" type="video/mp4">
+      </video>
     </div>
 
     <div class="section active" data-index="0">
@@ -36,7 +42,8 @@
             </div>
             <div class="main-screen__text animated">Выбирайте <span>с горячим</span> сердцем<span> и искусственным
                 интеллектом</span></div>
-            <button class="main-screen__next animated" onclick="scrollNext()"><img src="assets/svg/chevron.svg"></button>
+            <button class="main-screen__next animated" onclick="scrollNext()"><img
+                src="assets/svg/chevron.svg"></button>
           </div>
         </div>
       </div>
@@ -56,7 +63,7 @@
               <span class="animated">искусственный интеллект</span>
               <span class="animated">и эксперт для подбора идеального автомобиля</span>
             </div>
-<!--
+            <!--
             <div class="info-digits">
               <div class="info-digits__item animated">
                 <span>9 874</span>
@@ -122,9 +129,42 @@
     </div>
 
 
-    <div class="section" data-index="3">
+    <div class="section cars" data-index="3">
       <div class="content">
         <div class="container">
+          <a href="/" class="second-section__logo animated">
+            <img src="assets/svg/logo.svg" alt="CarMatch">
+          </a>
+
+          <!-- Swiper -->
+          <div class="car_swiper swiper animated">
+            <!-- Swiper-wrapper -->
+            <div class="swiper-wrapper" id="carRecommendations">
+              <!-- Car recommendations will be dynamically loaded here -->
+            </div>
+            <!-- Swiper buttons -->
+            <div class="swiper_buttons">
+              <!-- Left button -->
+              <div class="left_button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <circle cx="28.2249" cy="28.222" r="26.7012" stroke="white" stroke-width="2.08061" />
+                  <path
+                    d="M15.0479 27.1823C14.4733 27.1823 14.0075 27.6481 14.0075 28.2227C14.0075 28.7972 14.4733 29.263 15.0479 29.263V27.1823ZM38.6793 28.9583C39.0856 28.552 39.0856 27.8933 38.6793 27.487L32.0589 20.8666C31.6526 20.4603 30.9939 20.4603 30.5876 20.8666C30.1814 21.2728 30.1814 21.9315 30.5876 22.3378L36.4725 28.2227L30.5876 34.1075C30.1814 34.5138 30.1814 35.1725 30.5876 35.5787C30.9939 35.985 31.6526 35.985 32.0589 35.5787L38.6793 28.9583ZM15.0479 29.263H37.9437V27.1823H15.0479V29.263Z"
+                    fill="white" />
+                </svg>
+              </div>
+              <!-- Right button -->
+              <div class="right_button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <circle cx="28.2249" cy="28.222" r="26.7012" stroke="white" stroke-width="2.08061" />
+                  <path
+                    d="M15.0479 27.1823C14.4733 27.1823 14.0075 27.6481 14.0075 28.2227C14.0075 28.7972 14.4733 29.263 15.0479 29.263V27.1823ZM38.6793 28.9583C39.0856 28.552 39.0856 27.8933 38.6793 27.487L32.0589 20.8666C31.6526 20.4603 30.9939 20.4603 30.5876 20.8666C30.1814 21.2728 30.1814 21.9315 30.5876 22.3378L36.4725 28.2227L30.5876 34.1075C30.1814 34.5138 30.1814 35.1725 30.5876 35.5787C30.9939 35.985 31.6526 35.985 32.0589 35.5787L38.6793 28.9583ZM15.0479 29.263H37.9437V27.1823H15.0479V29.263Z"
+                    fill="white" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
 
         </div>
       </div>
@@ -144,6 +184,7 @@
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script src="assets/js/chat-integration.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
