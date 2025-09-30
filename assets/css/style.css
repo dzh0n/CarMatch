@@ -549,6 +549,7 @@ a {
   height: 120px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
 }
 
 
@@ -797,4 +798,349 @@ a {
 
 .cars .car_swiper .swiper_buttons .left_button {
   transform: rotate(180deg);
+}
+
+
+/*modals*/
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  padding: 33px 18px 22px 18px;
+  border-radius: 40px;
+  background: #F8EEFF;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  height: max-content;
+  z-index: 100;
+  opacity: 0;
+  scale: 0;
+  visibility: hidden;
+  transition: 0.3s all ease;
+  z-index: 101;
+}
+
+@media (max-width: 767px) {
+  .modal {
+    max-width: 260px;
+    padding: 30px 12px 19px 12px;
+    border-radius: 24px;
+  }
+}
+
+.modal.active {
+  opacity: 1;
+  scale: 1;
+  visibility: visible;
+}
+
+.modal.thanks video {
+  max-width: 343px;
+  max-height: 343px;
+  width: 100%;
+  height: 100%;
+}
+
+.modal.thanks .modal_title {
+  text-align: start;
+}
+
+.modal.thanks .button_modal {
+  border: none;
+  outline: none;
+  border-radius: 22px;
+  background: #9240C6;
+  width: 100%;
+  height: 63px;
+  cursor: pointer;
+  margin-top: 18px;
+  color: #FFF;
+  text-align: center;
+  font-family: "Oceanic Grotesk TRIAL";
+  font-size: 19.419px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27.048px;
+  /* 139.286% */
+  letter-spacing: -0.583px;
+  transition: 0.3s all ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .modal.thanks .button_modal {
+    border-radius: 12px;
+    height: 48px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+  }
+}
+
+.modal .close_btn {
+  position: absolute;
+  right: -70px;
+  top: 0;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+}
+
+@media (max-width: 767px) {
+  .modal .close_btn {
+    width: 18px;
+    height: 18px;
+    right: -30px;
+  }
+}
+
+.modal .close_btn svg {
+  height: 100%;
+  width: 100%;
+}
+
+.modal .modal_title {
+  color: #000;
+  font-family: Inter;
+  font-size: 25.389px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.762px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .modal .modal_title {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.6px;
+    margin-bottom: 17px;
+  }
+}
+
+.modal .modal_inputs {
+  display: flex;
+  gap: 14px 0;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .modal .modal_inputs {
+    gap: 7px 0;
+  }
+}
+
+.modal .modal_inputs input {
+  width: 100%;
+  height: 63px;
+  border-radius: 22px;
+  background: #FFF;
+  text-align: center;
+  color: #000;
+  text-align: center;
+  font-family: "Oceanic Grotesk TRIAL";
+  font-size: 19.419px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27.048px;
+  /* 139.286% */
+  letter-spacing: -0.583px;
+  border: none;
+  outline: none;
+}
+
+@media (max-width: 767px) {
+  .modal .modal_inputs input {
+    padding-left: 19px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    text-align: start;
+  }
+}
+
+.modal .modal_inputs input::placeholder {
+  color: #000;
+  text-align: center;
+  font-family: "Oceanic Grotesk TRIAL";
+  font-size: 19.419px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27.048px;
+  /* 139.286% */
+  letter-spacing: -0.583px;
+}
+
+@media (max-width: 767px) {
+  .modal .modal_inputs input::placeholder {
+    color: #50555C;
+    font-family: "Oceanic Grotesk TRIAL";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    text-align: start;
+  }
+}
+
+.modal .modal_inputs input:focus {
+  color: #000;
+  text-align: center;
+  font-family: "Oceanic Grotesk TRIAL";
+  font-size: 19.419px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27.048px;
+  /* 139.286% */
+  letter-spacing: -0.583px;
+}
+
+@media (max-width: 767px) {
+  .modal .modal_inputs input:focus {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    text-align: start;
+  }
+}
+
+.modal .policy {
+  display: flex;
+  gap: 0 17px;
+  margin-top: 18px;
+}
+
+.modal .policy .checked {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000;
+  position: relative;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.modal .policy .checked.active::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal .policy .checked.active::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal .policy .checked::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0px;
+  height: 100%;
+  width: 1px;
+  background: #000;
+  transform: rotate(45deg);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s all ease;
+}
+
+.modal .policy .checked::before {
+  content: "";
+  position: absolute;
+  right: 7px;
+  top: 0px;
+  height: 100%;
+  width: 1px;
+  background: #000;
+  transform: rotate(-45deg);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s all ease;
+}
+
+.modal .policy .link {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  /* 22.4px */
+}
+
+@media (max-width: 767px) {
+  .modal .policy .link {
+    font-size: 14px;
+  }
+}
+
+.modal .policy .link a {
+  text-decoration: underline;
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  /* 22.4px */
+}
+
+@media (max-width: 767px) {
+  .modal .policy .link a {
+    font-size: 14px;
+  }
+}
+
+.modal button {
+  border: none;
+  outline: none;
+  border-radius: 22px;
+  background: rgba(146, 64, 198, 0.3);
+  width: 100%;
+  height: 63px;
+  cursor: pointer;
+  margin-top: 18px;
+  color: #FFF;
+  text-align: center;
+  font-family: "Oceanic Grotesk TRIAL";
+  font-size: 19.419px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27.048px;
+  /* 139.286% */
+  letter-spacing: -0.583px;
+  transition: 0.3s all ease;
+}
+
+@media (max-width: 767px) {
+  .modal button {
+    border-radius: 12px;
+    height: 48px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+  }
+}
+
+.modal button.active {
+  background-color: #9240C6;
 }

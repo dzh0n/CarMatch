@@ -183,9 +183,130 @@
   </div>
 
 
+  <!-- Modals booking -->
+  <div class="modal booking">
+    <!-- Modal close button -->
+    <div class="close_btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="58" viewBox="0 0 60 58" fill="none">
+        <line x1="2.70711" y1="1.29289" x2="58.7071" y2="57.2929" stroke="white" stroke-width="2" />
+        <line x1="1.29289" y1="57.2929" x2="57.2929" y2="1.29289" stroke="white" stroke-width="2" />
+      </svg>
+    </div>
+    <!-- Modal title -->
+    <div class="modal_title">
+      Свяжитесь со мной!
+    </div>
+    <!-- Modal inputs -->
+    <form class="modal_inputs">
+      <!-- Input -->
+      <input type="text" name="name" placeholder="Фамилия и имя" required>
+      <div class="error"></div>
+
+      <!-- Input -->
+      <input type="text" name="mail" placeholder="Почта" required>
+      <div class="error"></div>
+
+      <!-- Input -->
+      <input type="text" name="number" placeholder="Телефон" required>
+      <div class="error"></div>
+
+      <!-- Hidden fields for car info -->
+      <input type="hidden" name="car">
+      <input type="hidden" name="action">
+
+      <!-- Privacy policy -->
+      <div class="policy">
+        <!-- Checked -->
+        <div class="checked">
+          <div class="border t"></div>
+          <div class="border b"></div>
+        </div>
+        <!-- Link -->
+        <div class="link">
+          Принимаю условия <a href="/policy.html" target="_blank">пользовательского соглашения</a>
+        </div>
+      </div>
+      <div class="error"></div>
+
+      <!-- Button -->
+      <button type="submit" class="thank_btn" disabled>Отправить</button>
+    </form>
+  </div>
+
+  <!-- Modal Contact Form -->
+  <div class="modal contact-form">
+    <!-- Modal close button -->
+    <div class="close_btn" onclick="carMatchModal.closeModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="58" viewBox="0 0 60 58" fill="none">
+        <line x1="2.70711" y1="1.29289" x2="58.7071" y2="57.2929" stroke="white" stroke-width="2" />
+        <line x1="1.29289" y1="57.2929" x2="57.2929" y2="1.29289" stroke="white" stroke-width="2" />
+      </svg>
+    </div>
+    <!-- Modal title -->
+    <div class="modal_title" id="contactModalTitle">
+      Свяжитесь с нами!
+    </div>
+    <!-- Modal inputs -->
+    <form class="modal_inputs" id="contactForm">
+      <!-- Input -->
+      <input type="text" name="name" id="contactName" placeholder="Фамилия и имя" required>
+      <div class="error-message" id="nameError"></div>
+
+      <!-- Input -->
+      <input type="email" name="email" id="contactEmail" placeholder="Почта" required>
+      <div class="error-message" id="emailError"></div>
+
+      <!-- Input -->
+      <input type="tel" name="phone" id="contactPhone" placeholder="Телефон" required>
+      <div class="error-message" id="phoneError"></div>
+
+      <!-- Hidden field for car info -->
+      <input type="hidden" name="carInfo" id="carInfo">
+      <input type="hidden" name="formType" id="formType">
+
+      <!-- Privacy policy -->
+      <div class="policy">
+        <!-- Checked -->
+        <div class="checked" id="privacyCheck">
+          <div class="border t"></div>
+          <div class="border b"></div>
+        </div>
+        <!-- Link -->
+        <div class="link">
+          Принимаю условия <a href="/policy.html" target="_blank">пользовательского соглашения</a>
+        </div>
+      </div>
+      <div class="error-message" id="privacyError"></div>
+
+      <!-- Button -->
+      <button type="submit" class="thank_btn" id="submitContactBtn">Отправить</button>
+    </form>
+  </div>
+
+  <!-- Modal thanks -->
+  <div class="modal thanks">
+
+    <!-- Modal title -->
+    <div class="modal_title">
+      Спасибо<br> за обращение,<br>мы скоро свяжемся с<br> вами!
+    </div>
+
+    <!-- Heart -->
+    <div class="heart">
+      <video src="assets/video/heart.webm" class="modal_heart" playsinline muted loop autoplay></video>
+    </div>
+
+    <!-- Button -->
+    <div class="button_modal" onclick="carMatchModal.closeModal()">
+      Спасибо!
+    </div>
+  </div>
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script src="assets/js/chat-integration.js"></script>
+  <script src="assets/js/modal-manager.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 
