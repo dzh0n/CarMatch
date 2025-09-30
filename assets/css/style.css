@@ -1144,3 +1144,12 @@ a {
 .modal button.active {
   background-color: #9240C6;
 }
+
+
+@media (max-width: 767px) {
+  .cookies {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
