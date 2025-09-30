@@ -1170,3 +1170,10 @@ a {
     line-height: 102px;
   }
 }
+
+@media (max-width: 567px) {
+      .info-titles span {
+        font-size: 46px;
+        line-height: 52px;
+    }
+}
