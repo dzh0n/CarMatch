@@ -1165,7 +1165,7 @@ a {
   }
 
   .section[data-index="3"] .second-section__logo {
-    height: 85px;
+    height: 85px; 
   }
 
   .bg-video:nth-child(4) {
