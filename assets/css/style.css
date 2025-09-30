@@ -1154,9 +1154,13 @@ a {
   }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1599px) {
   .main-screen__text {
     line-height: 110%;
+  }
+  .info-titles span {
+    font-size: 104px;
+    line-height: 112px;
   }
 }
 
