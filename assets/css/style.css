@@ -1163,6 +1163,14 @@ a {
     font-size: 94px;
     line-height: 102px;
   }
+
+  .section[data-index="3"] .second-section__logo {
+    height: 85px;
+  }
+
+  .bg-video:nth-child(4) {
+    width: 350px;
+  }
 }
 
 @media (max-width: 1399px) {
