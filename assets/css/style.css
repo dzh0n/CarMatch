@@ -1222,4 +1222,12 @@ a {
     padding-left: 24px;
     height: 60px;
   }
+
+  .chat_texts::before {
+    top: 60px;
+  }
+
+  .chat_texts {
+    height: calc(100vh - 150px);
+  }
 }
