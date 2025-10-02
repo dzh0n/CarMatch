@@ -169,14 +169,88 @@ $(document).ready(function () {
     if (Math.abs(diff) < 50) return;
 
     if (diff > 0) {
-      //goToSection(currentSectionIndex + 1);
       if (currentSectionIndex === 0) {
 
+        goToSection(currentSectionIndex + 1, function (current, next) {
+          // Перед анимацией
+          $('.bg-video').eq(0).addClass('zoom-in');
+          $('.bg-video').eq(1).addClass('zoom-in');
+        },
+          function (current, next) {
+            // После анимации
+            setTimeout(() => {
+              $('.bg-video').eq(0).animate({ opacity: 0 }).removeClass('zoom-in');
+              $('.bg-video').eq(0).removeClass('active zoom-in');
+              $('.bg-video').eq(1).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
+              animateSection2();
+            }, 2000);
+
+          }
+        );
       }
+
+      //#2
+      if (currentSectionIndex === 1) {
+
+        goToSection(currentSectionIndex + 1, function (current, next) {
+          // Перед анимацией
+          $('.bg-video').eq(1).addClass('zoom-in');
+          $('.bg-video').eq(2).addClass('zoom-in');
+        },
+          function (current, next) {
+            // После анимации
+            setTimeout(() => {
+              $('.bg-video').eq(1).animate({ opacity: 0 }).removeClass('zoom-in');
+              $('.bg-video').eq(1).removeClass('active zoom-in');
+              $('.bg-video').eq(2).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
+              animateSection3();
+            }, 2000);
+
+          }
+        );
+      }
+
+      //#3
+      /*if (currentSectionIndex === 2) {
+        goToSection(currentSectionIndex + 1, function (current, next) {
+          // Перед анимацией
+          $('.bg-video').eq(2).addClass('zoom-in');
+          $('.bg-video').eq(3).addClass('zoom-in');
+        },
+          function (current, next) {
+            // После анимации
+            setTimeout(() => {
+              $('.bg-video').eq(2).animate({ opacity: 0 }).removeClass('zoom-in');
+              $('.bg-video').eq(2).removeClass('active zoom-in');
+              $('.bg-video').eq(3).removeClass('zoom-in').addClass('active').animate({ opacity: 1 });
+              animateSection4();
+            }, 2000);
+
+          }
+        );
+      }*/
 
 
     } else {
-      goToSection(currentSectionIndex - 1);
+      //goToSection(currentSectionIndex - 1);
+
+      if (currentSectionIndex === 1) {
+        goToSection(currentSectionIndex - 1, function (current, next) {
+          // Перед анимацией
+          $('.bg-video').eq(1).addClass('zoom-in');
+          $('.bg-video').eq(0).addClass('zoom-in');
+        },
+          function (current, next) {
+            // После анимации
+            setTimeout(() => {
+              $('.bg-video').eq(1).animate({ opacity: 0 }).removeClass('zoom-in');
+              $('.bg-video').eq(1).removeClass('active');
+              $('.bg-video').eq(0).addClass('active zoom-out').animate({ opacity: 1 }).removeClass('zoom-in zoom-out');
+              animateSection1();
+            }, 2000);
+          }
+        );
+      }
     }
   });
 
