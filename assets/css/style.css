@@ -1154,7 +1154,7 @@ a {
   }
 }
 
-@media (max-width: 1599px) {
+@media (max-width: 1600px) {
   .main-screen__text {
     line-height: 110%;
   }
@@ -1165,11 +1165,17 @@ a {
   }
 
   .section[data-index="3"] .second-section__logo {
-    height: 85px; 
+    height: 85px;
+    top: 45px;
   }
 
   .bg-video:nth-child(4) {
     width: 350px;
+    top: 105px;
+  }
+
+  .cars .car_swiper {
+    padding-top: 180px;
   }
 }
 
@@ -1192,5 +1198,14 @@ a {
     top: 15px;
     left: 15px;
     height: 35px;
+  }
+
+  .section[data-index="3"] .second-section__logo {
+    height: 40px;
+    top: 10px;
+  }
+
+  .cars .car_swiper {
+    padding-top: 130px;
   }
 }
