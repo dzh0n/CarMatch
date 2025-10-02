@@ -1206,7 +1206,7 @@ a {
   }
 
   .cars .car_swiper {
-    padding-top: 130px;
+    padding-top: 110px;
   }
 
   .chat .chat_texts .chat_item {
@@ -1229,5 +1229,15 @@ a {
 
   .chat_texts {
     height: calc(100vh - 150px);
+  }
+
+  .cars .car_swiper .swiper-wrapper .swiper-slide {
+    max-width: 100%;
+    ;
+  }
+
+  .bg-video:nth-child(4) {
+    width: 250px;
+    top: 80px;
   }
 }
