@@ -1208,4 +1208,18 @@ a {
   .cars .car_swiper {
     padding-top: 130px;
   }
+
+  .chat .chat_texts .chat_item {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .chat .input_chat {
+    font-size: 14px;
+  }
+
+  .chat .chat_input {
+    padding-left: 24px;
+    height: 60px;
+  }
 }
