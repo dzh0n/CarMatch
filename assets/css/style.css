@@ -1190,6 +1190,9 @@ a {
   .chat .chat_texts .chat_item {
     font-size: 22px;
   }
+  .chat .input_chat {
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 567px) {
