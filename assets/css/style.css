@@ -1186,6 +1186,12 @@ a {
   }
 }
 
+@media (max-width: 1000px) {
+  .chat .chat_texts .chat_item {
+    font-size: 22px;
+  }
+}
+
 @media (max-width: 567px) {
   .info-titles span {
     font-size: 46px;

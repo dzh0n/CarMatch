@@ -59,6 +59,7 @@ $(document).ready(function () {
   // Обработчик скролла
   // ================================
   $(window).on('wheel', function (e) {
+
     if (isAnimating) return;
 
     if (e.originalEvent.deltaY > 0) {
@@ -123,6 +124,8 @@ $(document).ready(function () {
           }
         );
       }*/
+
+      
 
 
     } else {
@@ -251,6 +254,12 @@ $(document).ready(function () {
           }
         );
       }
+
+      if (currentSectionIndex == 2) {
+
+      }
+
+
     }
   });
 
@@ -319,14 +328,36 @@ $(document).ready(function () {
   scrollToBottom();
 
   // Обработчик скролла для отслеживания позиции пользователя
-  $chatContainer.on('scroll', function () {
+  $chatContainer.on('wheel', function () {
+
     const scrollTop = $chatContainer.scrollTop();
     const scrollHeight = $chatContainer[0].scrollHeight;
     const clientHeight = $chatContainer[0].clientHeight;
 
     // Проверяем, находится ли пользователь внизу (с небольшим запасом в 10px)
     isScrolledToBottom = (scrollHeight - scrollTop - clientHeight <= 10);
+    
   });
+/*
+  $chatContainer.on('wheel', function (e) {
+  const scrollTop = $chatContainer.scrollTop();
+  const scrollHeight = $chatContainer[0].scrollHeight;
+  const clientHeight = $chatContainer[0].clientHeight;
+
+  
+
+  // Проверяем, находится ли пользователь внизу
+  isScrolledToBottom = (scrollHeight - scrollTop - clientHeight <= 10);
+  
+  // Всегда предотвращаем прокрутку страницы при скролле внутри чата
+  e.preventDefault();
+  e.stopPropagation();
+
+  
+  
+  // Прокручиваем контейнер чата
+  $chatContainer.scrollTop(scrollTop + e.originalEvent.deltaY);
+});*/
 
   // Функция для добавления нового сообщения
   function addMessage(messageText) {
@@ -349,6 +380,7 @@ $(document).ready(function () {
   });
 
   $chatContainer.on('touchmove', function (e) {
+    
     if (!isSwiping) return;
 
     const currentY = e.originalEvent.touches[0].clientY;
